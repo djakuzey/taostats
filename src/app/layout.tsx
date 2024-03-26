@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { cn } from "../lib/utils";
+import { cn } from "@/lib/utils";
+
+import Header from "../components/header";
+import Navigation from "@/components/navigation";
 
 import "./globals.css";
 
@@ -27,6 +30,8 @@ export default function RootLayout({
         "min-h-screen bg-background font-sans antialiased",
         fontInter.variable
       )}>
+        <Header/>
+        <Navigation/>
         {children}
       </body>
     </html>

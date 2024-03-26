@@ -11,9 +11,13 @@ const config = {
 	],
   prefix: "",
   theme: {
+    placeholderColor: {
+      primary: 'hsl(var(--secondary-text))',
+      secondary: '#ffed4a',
+    },
     container: {
       center: true,
-      padding: "2rem",
+      padding: "4px",
       screens: {
         "2xl": "1400px",
       },
@@ -22,7 +26,10 @@ const config = {
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
+        inputBackground: "hsl(var(--input-background))",
         ring: "hsl(var(--ring))",
+        green: "hsl(var(--green))",
+        secondaryText: "hsl(var(--secondary-text))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {

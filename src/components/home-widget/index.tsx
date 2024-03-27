@@ -18,6 +18,6 @@ const HomeWidget = ({
       </span>
     </div>
   );
-}
+};
 
 export default HomeWidget;

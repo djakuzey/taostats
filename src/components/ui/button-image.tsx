@@ -1,8 +1,7 @@
 import React from "react";
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-import { Button, ButtonProps, buttonVariants } from "./button";
-
+import { Button, ButtonProps } from "./button";
 
 export interface ButtonImageProps extends ButtonProps {
   position?: "left" | "right";
@@ -38,6 +37,8 @@ const ButtonImage = React.forwardRef<HTMLButtonElement, ButtonImageProps>(
         {position === "right" && icon && icon}
       </Button>
     );
-});
+  });
+
+ButtonImage.displayName = "ButtonImage";
 
 export { ButtonImage };

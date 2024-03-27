@@ -11,7 +11,7 @@ const NavigationItem = ({ text, link }: NavigationItemProps) => {
       <span className="">{text}</span>
       <ChevronDown width={20} height={20}/>
     </Link>
-  )
-}
+  );
+};
 
 export default NavigationItem;

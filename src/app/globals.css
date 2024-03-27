@@ -28,7 +28,7 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 20% 98%;
 
-    --border: 0 0% 14.51%;
+    --border: 0, 0%, 29%, 1;
     --input: 0 0% 14.51%;
     --input-background: 0, 0%, 18%;
     --ring: 224 71.4% 4.1%;
@@ -36,6 +36,7 @@
     --radius: 0.5rem;
 
     --green: 97, 80%, 65%;
+    --teal: 172, 100%, 43%, 1;
     --secondary-text: 0, 0%, 56%;
   }
 

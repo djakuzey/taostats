@@ -59,9 +59,8 @@ const index = () => {
           Stake
         </ButtonImage>
       </div>
-
     </div>
-  )
+  );
 };
 
 export default index;

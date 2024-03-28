@@ -1,28 +1,12 @@
 import React from "react";
 import Image from "next/image";
 
-import HomeWidget from "@/components/home-widget";
+import HomeWidget from "../components/home-components/home-widget";
 import { BoxArrowUp } from "@/icons";
 import ChartTradingView from "@/components/charts/chart-trading-view";
-import TableComponent from "@/components/table";
-import { Subnet, subnets } from "@/mocks/table";
 import { widgets } from "@/mocks/widgets";
-
-// const a = {
-//   id: 1,
-//   name: "Time Series Prediction",
-//   createdAt: "2021-09-01",
-//   owner: "5esfr297ga124124124",
-//   emission: 9.24,
-// }
-// const subnetColumns = [
-//   {
-//     id: "id",
-//     header: string;
-//     accessor: keyof TableFormat;
-//     cell: (info: any) => React.ReactNode;
-//   }
-// ];
+import SubnetTable from '@/components/home-components/subnet-table/indext';
+import ValidatorsTable from '@/components/home-components/validators-table';
 
 export default function Home() {
   return (
@@ -57,14 +41,12 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div>
-        <ChartTradingView className=""/>
+      <div className="mb-16">
+        <ChartTradingView/>
       </div>
-      <div>
-        {/*<TableComponent<Subnet>*/}
-        {/*  data={subnets}*/}
-        {/*  columns={}*/}
-        {/*/>*/}
+      <div className="grid grid-cols-2 mx-11 gap-x-16">
+        <SubnetTable/>
+        <ValidatorsTable/>
       </div>
     </main>
   );

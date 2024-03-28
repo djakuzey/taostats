@@ -1,4 +1,4 @@
-import { HomeWidgetProps } from '@/components/home-widget';
+import { HomeWidgetProps } from '../components/home-components/home-widget';
 
 export const widgets: HomeWidgetProps[] = [
   {

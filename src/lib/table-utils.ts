@@ -2,11 +2,13 @@ import { createColumnHelper, ColumnHelper, ColumnDef } from "@tanstack/react-tab
 import React from "react";
 
 export interface Column<TableFormat> {
-  id: string;
-  header: string;
+  id?: string;
+  header?: () => React.ReactNode;
   accessor: keyof TableFormat;
-  cell: (info: any) => React.ReactNode;
-  footer: (info: any) => React.ReactNode;
+  cell?: (info: any) => React.ReactNode;
+  footer?: (info: any) => React.ReactNode;
+  enableSorting?: boolean;
+  maxSize?: number;
 }
 
 export interface ReturnType<TableFormat> {
@@ -19,7 +21,12 @@ export function tableData<TableFormat>(columns: Column<TableFormat>[]): ReturnTy
 
   const tableColumns: ColumnDef<TableFormat, TableFormat[keyof TableFormat]>[] = columns?.map(({ accessor, ...rest}) => {
     return columnHelper.accessor((row: TableFormat) => row[accessor], {
-      ...rest,
+      id: rest?.id || "",
+      header: rest?.header,
+      cell: rest?.cell,
+      footer: rest?.footer,
+      enableSorting: rest?.enableSorting,
+      maxSize: rest?.maxSize,
     });
   });
 

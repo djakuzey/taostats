@@ -30,6 +30,7 @@ const config = {
         ring: "hsl(var(--ring))",
         green: "hsl(var(--green))",
         secondaryText: "hsl(var(--secondary-text))",
+        teal: "hsl(var(--teal))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {

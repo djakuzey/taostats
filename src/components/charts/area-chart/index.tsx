@@ -5,16 +5,13 @@ import { AxisBottom } from '@visx/axis';
 import { curveMonotoneX } from "@visx/curve";
 import { scaleTime, scaleLinear } from "@visx/scale";
 import { LinearGradient } from "@visx/gradient";
-import { max, extent, bisector } from "@visx/vendor/d3-array";
+import { max, extent, reverse } from "@visx/vendor/d3-array";
 import { useScreenSize } from "@visx/responsive";
-// import { timeFormat } from '@visx/vendor/d3-time-format';
+import { parse } from "date-fns";
 
-export const accentColor = '#00DBBCCC';
-export const accentColorDark = '#FF8B25';
-
-interface YOption<T> {
+export interface YOption<T> {
   key: keyof T;
-  color?: string;
+  color: string;
 }
 
 interface ChartOptions {
@@ -23,7 +20,7 @@ interface ChartOptions {
 
 export interface AreaProps<T>  {
   width?: number;
-  autoWidth: boolean;
+  autoWidth?: boolean;
   height: number;
   margin?: { top: number; right: number; bottom: number; left: number };
   data: T[];
@@ -52,39 +49,45 @@ function AreaChart<T>({
 
   const xValues: any[] = useMemo(() => data.map(d => d[xKey]), [data, xKey]);
   const getYValues = useCallback((key: keyof T) => data.map((item: T) => item[key]), [data]);
+  const getDate = (d: any) => parse(d?.date, "dd-MM-yyyy", new Date());
 
-  const xScale = scaleLinear({
-    domain: extent(xValues) as [number, number],
+  const xScale = xKey !== "date" ? scaleLinear({
+    domain: [max(xValues) || 0, 0],
     nice: true,
-    range: [0, innerWidth],
+    range: [innerWidth, 0],
+  }) : scaleTime({
+    range: [innerWidth, 0],
+    domain: reverse(extent(data, getDate)) as [Date, Date],
   });
 
   const renderYData = useCallback(() => {
     return (
       yOptions.map(({ key, color }, index) => {
+        console.log("color", color);
         const yScale = scaleLinear({
           domain: [0, max(getYValues(key) as number[]) || 0],
           nice: true,
           range: [innerHeight, 0],
         });
-        const gradientColor = index === 0 ? accentColorDark : accentColor;
+
+        const gradientId = `area-gradient-${index}-${color}`;
 
         return (
           <React.Fragment key={index}>
             <LinearGradient
-              id={`area-gradient-${index}`}
-              from={color || gradientColor}
-              to={color || gradientColor}
+              id={gradientId}
+              from={color + "DE"}
+              to={color + "DE"}
               toOpacity={0.2}
             />
             <AreaClosed<T>
               data={data}
-              x={(d) => xScale(d[xKey] as number) ?? 0}
+              x={(d) => xKey !== "date" ? xScale(d[xKey] as number) ?? 0 : xScale(getDate(d)) ?? 0}
               y={(d) => yScale(d[key] as number) ?? 0}
               yScale={yScale}
               strokeWidth={1}
-              stroke={gradientColor}
-              fill={`url(#area-gradient-${index})`}
+              stroke={color}
+              fill={`url(#${gradientId})`}
               curve={curveMonotoneX}
             />
           </React.Fragment>
@@ -94,33 +97,23 @@ function AreaChart<T>({
   }, [yOptions, getYValues, innerHeight, data, xScale, xKey]);
 
   return (
-    <div>
-      <svg width={chartWidth} height={height + 20}>
-        <rect
-          x={0}
-          y={0}
-          width={chartWidth}
-          height={height}
-          fill="transparent"
-          rx={14}
-        />
-        <AxisBottom
-          scale={xScale}
-          top={height}
-          numTicks={5}
-          tickLength={6}
-          tickStroke="transparent"
-          // stroke={"#fff"}
-          tickLabelProps={() => ({
-            fill: "#303030",
-            fontSize: 13,
-            textAnchor: "middle",
-            fontWeight: 500,
-          })}
-        />
-        {renderYData()}
-      </svg>
-    </div>
+    <svg width={chartWidth} height={height + 20}>
+      <AxisBottom
+        scale={xScale}
+        top={height}
+        numTicks={5}
+        tickLength={6}
+        tickStroke="transparent"
+        // stroke={"#fff"}
+        tickLabelProps={() => ({
+          fill: "#303030",
+          fontSize: 13,
+          textAnchor: "middle",
+          fontWeight: 500,
+        })}
+      />
+      {renderYData()}
+    </svg>
   );
 }
 

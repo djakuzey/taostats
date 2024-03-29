@@ -1,3 +1,31 @@
+export interface UserCount {
+  activeUsers: number;
+  date: string;
+  nonZeroUsers: number;
+}
+
+export const usersCount: UserCount[] = [
+  { activeUsers: 5, date: "1-1-2018", nonZeroUsers: 3 },
+  { activeUsers: 9, date: "2-2-2018", nonZeroUsers: 6 },
+  { activeUsers: 13, date: "3-3-2018", nonZeroUsers: 8 },
+  { activeUsers: 19, date: "4-4-2018", nonZeroUsers: 11 },
+  { activeUsers: 23, date: "5-5-2018", nonZeroUsers: 15 },
+  { activeUsers: 28, date: "6-6-2018", nonZeroUsers: 18 },
+  { activeUsers: 35, date: "7-7-2018", nonZeroUsers: 21 },
+  { activeUsers: 42, date: "8-8-2018", nonZeroUsers: 26 },
+  { activeUsers: 50, date: "9-9-2018", nonZeroUsers: 31 },
+  { activeUsers: 60, date: "10-10-2018", nonZeroUsers: 37 },
+  { activeUsers: 70, date: "11-11-2018", nonZeroUsers: 44 },
+  { activeUsers: 82, date: "12-12-2018", nonZeroUsers: 53 },
+  { activeUsers: 95, date: "13-1-2019", nonZeroUsers: 63 },
+  { activeUsers: 110, date: "14-2-2019", nonZeroUsers: 76 },
+  { activeUsers: 127, date: "15-3-2019", nonZeroUsers: 90 },
+  { activeUsers: 147, date: "16-4-2019", nonZeroUsers: 108 },
+  { activeUsers: 168, date: "17-5-2019", nonZeroUsers: 128 },
+  { activeUsers: 192, date: "18-6-2019", nonZeroUsers: 149 },
+  { activeUsers: 219, date: "19-7-2019", nonZeroUsers: 173 },
+  { activeUsers: 250, date: "20-8-2019", nonZeroUsers: 201 }
+];
 export interface MockedData {
   uid: number;
   hotkey: string;

@@ -31,7 +31,7 @@ const Navigation = () => {
     <div className="flex items-center px-7 mt-7">
       <Image
         src="/logo.svg"
-        alt="small logo"
+        alt="logo"
         className="mr-16 ml-[-10px]"
         width={131}
         height={40}

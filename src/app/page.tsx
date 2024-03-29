@@ -3,10 +3,13 @@ import Image from "next/image";
 
 import HomeWidget from "../components/home-components/home-widget";
 import { BoxArrowUp } from "@/icons";
-import ChartTradingView from "@/components/charts/chart-trading-view";
+import ChartTradingView from "../components/home-components/chart-trading-view";
 import { widgets } from "@/mocks/widgets";
 import SubnetTable from '@/components/home-components/subnet-table/indext';
 import ValidatorsTable from '@/components/home-components/validators-table';
+import ActiveAccountsChart from '@/components/home-components/active-accounts-chart';
+import StackedChart from '@/components/home-components/stacked-chart';
+import LatestBlocksTable from '@/components/home-components/latest-blocks-table';
 
 export default function Home() {
   return (
@@ -44,9 +47,14 @@ export default function Home() {
       <div className="mb-16">
         <ChartTradingView/>
       </div>
-      <div className="grid grid-cols-2 mx-11 gap-x-16">
+      <div className="grid grid-cols-2 mx-11 gap-x-16 gap-y-24">
         <SubnetTable/>
         <ValidatorsTable/>
+        <ActiveAccountsChart/>
+        <StackedChart/>
+      </div>
+      <div className="mx-11 mt-20 pb-10">
+        <LatestBlocksTable/>
       </div>
     </main>
   );

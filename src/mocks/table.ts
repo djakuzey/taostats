@@ -178,3 +178,97 @@ export const validators: Validator[] = [
   { name: "Item 19", total: 47.56, owner: "Noah Adams", network: 57.34 },
   { name: "Item 20", total: 65.89, owner: "Ava Scott", network: 82.45 },
 ];
+
+export interface LatestBlock {
+  height: number;
+  speckVersion: number;
+  events: number;
+  hash: string;
+  extrinsics: number;
+  time: string;
+  viewBlock: string;
+}
+
+export const latestBlocksMock = [
+  {
+    height: 2635445,
+    speckVersion: 141,
+    events: 170,
+    hash: "0xb9e414a59a35f968da3922d968da39222355sdag21152315adsg",
+    extrinsics: 51,
+    time: "57 seconds ago",
+    viewBlock: "/block/2635445",
+  },
+  {
+    height: 2635445,
+    speckVersion: 141,
+    events: 170,
+    hash: "0xb9e414a59a35f968da3922d968da39222355sdag21152315adsg",
+    extrinsics: 51,
+    time: "57 seconds ago",
+    viewBlock: "/block/2635445",
+  },
+  {
+    height: 2635445,
+    speckVersion: 141,
+    events: 170,
+    hash: "0xb9e414a59a35f968da3922d968da39222355sdag21152315adsg",
+    extrinsics: 51,
+    time: "57 seconds ago",
+    viewBlock: "/block/2635445",
+  },
+  {
+    height: 2635445,
+    speckVersion: 141,
+    events: 170,
+    hash: "0xb9e414a59a35f968da3922d968da39222355sdag21152315adsg",
+    extrinsics: 51,
+    time: "57 seconds ago",
+    viewBlock: "/block/2635445",
+  },
+  {
+    height: 2635445,
+    speckVersion: 141,
+    events: 170,
+    hash: "0xb9e414a59a35f968da3922d968da39222355sdag21152315adsg",
+    extrinsics: 51,
+    time: "57 seconds ago",
+    viewBlock: "/block/2635445",
+  },
+  {
+    height: 2635445,
+    speckVersion: 141,
+    events: 170,
+    hash: "0xb9e414a59a35f968da3922d968da39222355sdag21152315adsg",
+    extrinsics: 51,
+    time: "57 seconds ago",
+    viewBlock: "/block/2635445",
+  },
+  {
+    height: 2635445,
+    speckVersion: 141,
+    events: 170,
+    hash: "0xb9e414a59a35f968da3922d968da39222355sdag21152315adsg",
+    extrinsics: 51,
+    time: "57 seconds ago",
+    viewBlock: "/block/2635445",
+  },
+  {
+    height: 2635445,
+    speckVersion: 141,
+    events: 170,
+    hash: "0xb9e414a59a35f968da3922d968da39222355sdag21152315adsg",
+    extrinsics: 51,
+    time: "57 seconds ago",
+    viewBlock: "/block/2635445",
+  },
+  {
+    height: 2635445,
+    speckVersion: 141,
+    events: 170,
+    hash: "0xb9e414a59a35f968da3922d968da39222355sdag21152315adsg",
+    extrinsics: 51,
+    time: "57 seconds ago",
+    viewBlock: "/block/2635445",
+  },
+];

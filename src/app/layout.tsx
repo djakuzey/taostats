@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 import Header from "../components/header";
 import Navigation from "@/components/navigation";
+import Footer from '@/components/footer';
 
 import "./globals.css";
 
@@ -35,6 +36,7 @@ export default function RootLayout({
         <Header/>
         <Navigation/>
         {children}
+        <Footer/>
       </body>
     </html>
   );

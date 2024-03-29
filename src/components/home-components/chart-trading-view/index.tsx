@@ -1,11 +1,12 @@
 "use client";
-import AreaChart from '@/components/charts/area-chart';
-import { mockedData, MockedData } from '@/mocks/mocked-data';
+import AreaChart, { YOption } from '@/components/charts/area-chart';
+import { mockedData, MockedData, UserCount } from '@/mocks/mocked-data';
 import React, { useMemo, useState } from 'react';
 import { formatAriaChartData } from '@/components/charts/chart-utils';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Plus, Minus } from "lucide-react";
+import { chartColors } from '@/constants/chart-colors';
 
 const yKeys: (keyof MockedData)[] = ["stake", "trust"];
 const xKey: keyof MockedData = "uid";
@@ -48,7 +49,7 @@ const ChartTradingView = ({
         xKey={xKey}
         yOptions={yKeys.map((key, index) => ({
           key,
-          useGradient: index === 0
+          color: index === 0 ? chartColors.orange : chartColors.teal,
         }))}
       />
       <div className="flex justify-end items-center absolute bottom-10 w-full">
@@ -62,7 +63,6 @@ const ChartTradingView = ({
           <Minus/>
         </Button>
       </div>
-
     </div>
   );
 };

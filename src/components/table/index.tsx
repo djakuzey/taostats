@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 
 interface TableProps<T> {
   data: T[];
-  title?: string;
+  title?: string | React.ReactNode;
   columns: Column<T>[];
   withFooter?: boolean;
   className?: string;
@@ -111,7 +111,7 @@ function Table<TableData>({
         </h1>
       )}
       <div
-        className={`grid`}
+        className="grid"
         style={{ gridTemplateColumns: `repeat(${columns.length}, minmax(0, auto))`}}
       >
         {headerRow}

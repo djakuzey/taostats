@@ -28,7 +28,7 @@ const navigationItems: NavigationItemProps[] = [
 
 const Navigation = () => {
   return (
-    <div className="flex items-center px-7 mt-7">
+    <div className="flex items-center px-7 pt-7 bg-foreground">
       <Image
         src="/logo.svg"
         alt="logo"

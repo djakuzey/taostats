@@ -79,7 +79,7 @@ const LatestBlocksTable = () => {
       <div
         className="absolute bottom-0 w-full left-0 z-2 h-[150px]"
         style={{
-          background: "linear-gradient(0deg, rgba(23,23,23,1) 0%, rgba(23,23,23,0.5) 80%, rgba(23,23,23,0) 100%)"
+          background: "linear-gradient(0deg, rgba(18,18,18,1) 0%, rgba(18,18,18,0.5) 80%, rgba(18,18,18,0) 100%)"
         }}
       />
     </div>

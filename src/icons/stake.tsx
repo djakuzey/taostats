@@ -1,6 +1,6 @@
-import { Icon } from "./utils";
+import { IconProps } from "./utils";
 
-const Stake = ({ width, height }: Icon) => (
+const Stake = ({ width, height }: IconProps) => (
   <svg width={width || 17} height={height || 17} viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M8.5 11.3334C10.0648 11.3334 11.3333 10.0648 11.3333 8.50002C11.3333 6.93521 10.0648 5.66669 8.5 5.66669V11.3334Z"

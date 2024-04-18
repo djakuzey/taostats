@@ -1,5 +1,9 @@
-import { createColumnHelper, ColumnHelper, ColumnDef } from "@tanstack/react-table";
-import React from "react";
+import {
+  createColumnHelper,
+  ColumnHelper,
+  ColumnDef,
+} from '@tanstack/react-table';
+import React from 'react';
 
 export interface Column<TableFormat> {
   id?: string;
@@ -16,19 +20,23 @@ export interface ReturnType<TableFormat> {
   tableColumns: ColumnDef<TableFormat, TableFormat[keyof TableFormat]>[];
 }
 
-export function tableData<TableFormat>(columns: Column<TableFormat>[]): ReturnType<TableFormat> {
-  const columnHelper: ColumnHelper<TableFormat> = createColumnHelper<TableFormat>();
+export function tableData<TableFormat>(
+  columns: Column<TableFormat>[],
+): ReturnType<TableFormat> {
+  const columnHelper: ColumnHelper<TableFormat> =
+    createColumnHelper<TableFormat>();
 
-  const tableColumns: ColumnDef<TableFormat, TableFormat[keyof TableFormat]>[] = columns?.map(({ accessor, ...rest}) => {
-    return columnHelper.accessor((row: TableFormat) => row[accessor], {
-      id: rest?.id || "",
-      header: rest?.header,
-      cell: rest?.cell,
-      footer: rest?.footer,
-      enableSorting: rest?.enableSorting,
-      maxSize: rest?.maxSize,
+  const tableColumns: ColumnDef<TableFormat, TableFormat[keyof TableFormat]>[] =
+    columns?.map(({ accessor, ...rest }) => {
+      return columnHelper.accessor((row: TableFormat) => row[accessor], {
+        id: rest?.id || '',
+        header: rest?.header,
+        cell: rest?.cell,
+        footer: rest?.footer,
+        enableSorting: rest?.enableSorting,
+        maxSize: rest?.maxSize,
+      });
     });
-  });
 
   return { columnHelper, tableColumns };
 }

@@ -1,27 +1,29 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-import { Input } from "@/components/ui/input";
-import NavigationItem, { NavigationItemProps } from "@/components/navigation/navigation-item";
+import { Input } from '@/components/ui/input';
+import NavigationItem, {
+  NavigationItemProps,
+} from '@/components/navigation/navigation-item';
 
 const navigationItems: NavigationItemProps[] = [
   {
-    text: "Subnets",
-    link: "/subnets",
+    text: 'Subnets',
+    link: '/subnets',
     // options: [], // TODO: handle options if there are any
   },
   {
-    text: "Validators",
-    link: "/validators",
+    text: 'Validators',
+    link: '/validators',
     // options: [], // TODO: handle options if there are any
   },
   {
-    text: "Developers",
-    link: "/developers",
+    text: 'Developers',
+    link: '/developers',
     // options: [], // TODO: handle options if there are any
   },
   {
-    text: "Resources",
-    link: "/resources",
+    text: 'Resources',
+    link: '/resources',
     // options: [], // TODO: handle options if there are any
   },
 ];
@@ -37,22 +39,14 @@ const Navigation = () => {
         height={40}
         priority
       />
-      <Input
-        className="mr-auto max-w-[375px]"
-      />
+      <Input className="mr-auto max-w-[375px]" />
       <div className="flex justify-between max-w-[500px] w-full mr-20">
         {navigationItems.map(({ text, link }, index) => (
-          <NavigationItem
-            key={index}
-            text={text}
-            link={link}
-          />
+          <NavigationItem key={index} text={text} link={link} />
         ))}
       </div>
 
-      <Input
-        className="max-w-[128px]"
-      />
+      <Input className="max-w-[128px]" />
     </div>
   );
 };

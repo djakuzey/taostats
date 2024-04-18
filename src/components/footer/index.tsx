@@ -1,7 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
-
-import GradientBackgroundFooter from '@/components/gradient-background';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
   return (

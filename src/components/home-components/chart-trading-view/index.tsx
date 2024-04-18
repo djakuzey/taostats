@@ -1,23 +1,21 @@
-"use client";
-import AreaChart, { YOption } from '@/components/charts/area-chart';
-import { mockedData, MockedData, UserCount } from '@/mocks/mocked-data';
+'use client';
+import AreaChart from '@/components/charts/area-chart';
+import { mockedData, MockedData } from '@/mocks/mocked-data';
 import React, { useMemo, useState } from 'react';
 import { formatAriaChartData } from '@/components/charts/chart-utils';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus } from 'lucide-react';
 import { chartColors } from '@/constants/chart-colors';
 
-const yKeys: (keyof MockedData)[] = ["stake", "trust"];
-const xKey: keyof MockedData = "uid";
+const yKeys: (keyof MockedData)[] = ['stake', 'trust'];
+const xKey: keyof MockedData = 'uid';
 
 interface ChartTradingViewProps {
   className?: string;
 }
 
-const ChartTradingView = ({
-  className,
-}: ChartTradingViewProps) => {
+const ChartTradingView = ({ className }: ChartTradingViewProps) => {
   const [itemsRage, setItemsRange] = useState(180);
 
   const handleIncreaseRange = () => {
@@ -35,13 +33,18 @@ const ChartTradingView = ({
     setItemsRange((prev) => Math.max(30, prev - 30));
   };
 
-  const formattedChartData = useMemo(() =>
-    formatAriaChartData<MockedData>(mockedData.slice(0, itemsRage), yKeys, xKey),
-  [itemsRage]
+  const formattedChartData = useMemo(
+    () =>
+      formatAriaChartData<MockedData>(
+        mockedData.slice(0, itemsRage),
+        yKeys,
+        xKey,
+      ),
+    [itemsRage],
   );
 
   return (
-    <div className={cn(className, "relative")}>
+    <div className={cn(className, 'relative')}>
       <AreaChart<MockedData>
         autoWidth
         height={500}
@@ -53,14 +56,12 @@ const ChartTradingView = ({
         }))}
       />
       <div className="flex justify-end items-center absolute bottom-10 w-full">
-        <Button className="mr-2">
-          Trading View
-        </Button>
+        <Button className="mr-2">Trading View</Button>
         <Button className="mr-0.5" onClick={handleIncreaseRange}>
-          <Plus/>
+          <Plus />
         </Button>
         <Button className="mr-11" onClick={handleDecreaseRange}>
-          <Minus/>
+          <Minus />
         </Button>
       </div>
     </div>

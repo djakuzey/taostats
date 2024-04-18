@@ -1,10 +1,10 @@
-import React from "react";
-import Image from "next/image";
+import React from 'react';
+import Image from 'next/image';
 
-import HomeWidget from "../components/home-components/home-widget";
-import { BoxArrowUp } from "@/icons";
-import ChartTradingView from "../components/home-components/chart-trading-view";
-import { widgets } from "@/mocks/widgets";
+import HomeWidget from '@/components/home-components/home-widget';
+import { BoxArrowUp } from '@/icons';
+import ChartTradingView from '@/components/home-components/chart-trading-view';
+import { widgets } from '@/mocks/widgets';
 import SubnetTable from '@/components/home-components/subnet-table/indext';
 import ValidatorsTable from '@/components/home-components/validators-table';
 import ActiveAccountsChart from '@/components/home-components/active-accounts-chart';
@@ -30,9 +30,7 @@ export default function Home() {
                 Bittensor price (τao)
               </span>
             </div>
-            <div className="mb-3 text-[64px] text-white">
-              $601.24
-            </div>
+            <div className="mb-3 text-[64px] text-white">$601.24</div>
             <div className="text-green flex items-center ml-3 mr-8 text-[16px]">
               <BoxArrowUp width={16} height={16} className="mr-3" />
               24.43%

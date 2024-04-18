@@ -1,13 +1,13 @@
-"use client";
-import React, { useMemo, useCallback } from "react";
-import { AreaClosed } from "@visx/shape";
+'use client';
+import React, { useMemo, useCallback } from 'react';
+import { AreaClosed } from '@visx/shape';
 import { AxisBottom } from '@visx/axis';
-import { curveMonotoneX } from "@visx/curve";
-import { scaleTime, scaleLinear } from "@visx/scale";
-import { LinearGradient } from "@visx/gradient";
-import { max, extent, reverse } from "@visx/vendor/d3-array";
-import { useScreenSize } from "@visx/responsive";
-import { parse } from "date-fns";
+import { curveMonotoneX } from '@visx/curve';
+import { scaleTime, scaleLinear } from '@visx/scale';
+import { LinearGradient } from '@visx/gradient';
+import { max, extent, reverse } from '@visx/vendor/d3-array';
+import { useScreenSize } from '@visx/responsive';
+import { parse } from 'date-fns';
 
 export interface YOption<T> {
   key: keyof T;
@@ -18,7 +18,7 @@ interface ChartOptions {
   showXAxis?: boolean;
 }
 
-export interface AreaProps<T>  {
+export interface AreaProps<T> {
   width?: number;
   autoWidth?: boolean;
   height: number;
@@ -39,7 +39,9 @@ function AreaChart<T>({
   yOptions,
   options,
 }: AreaProps<T>) {
-  const { width: fullWidth, height: fullHeight } = useScreenSize({ debounceTime: 150 });
+  const { width: fullWidth, height: fullHeight } = useScreenSize({
+    debounceTime: 150,
+  });
 
   const chartWidth = autoWidth || !width ? fullWidth : width;
 
@@ -47,53 +49,61 @@ function AreaChart<T>({
   const innerWidth = chartWidth - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
 
-  const xValues: any[] = useMemo(() => data.map(d => d[xKey]), [data, xKey]);
-  const getYValues = useCallback((key: keyof T) => data.map((item: T) => item[key]), [data]);
-  const getDate = (d: any) => parse(d?.date, "dd-MM-yyyy", new Date());
+  const xValues: any[] = useMemo(() => data.map((d) => d[xKey]), [data, xKey]);
+  const getYValues = useCallback(
+    (key: keyof T) => data.map((item: T) => item[key]),
+    [data],
+  );
+  const getDate = (d: any) => parse(d?.date, 'dd-MM-yyyy', new Date());
 
-  const xScale = xKey !== "date" ? scaleLinear({
-    domain: [max(xValues) || 0, 0],
-    nice: true,
-    range: [innerWidth, 0],
-  }) : scaleTime({
-    range: [innerWidth, 0],
-    domain: reverse(extent(data, getDate)) as [Date, Date],
-  });
-
-  const renderYData = useCallback(() => {
-    return (
-      yOptions.map(({ key, color }, index) => {
-        console.log("color", color);
-        const yScale = scaleLinear({
-          domain: [0, max(getYValues(key) as number[]) || 0],
+  const xScale =
+    xKey !== 'date'
+      ? scaleLinear({
+          domain: [max(xValues) || 0, 0],
           nice: true,
-          range: [innerHeight, 0],
+          range: [innerWidth, 0],
+        })
+      : scaleTime({
+          range: [innerWidth, 0],
+          domain: reverse(extent(data, getDate)) as [Date, Date],
         });
 
-        const gradientId = `area-gradient-${index}-${color}`;
+  const renderYData = useCallback(() => {
+    return yOptions.map(({ key, color }, index) => {
+      console.log('color', color);
+      const yScale = scaleLinear({
+        domain: [0, max(getYValues(key) as number[]) || 0],
+        nice: true,
+        range: [innerHeight, 0],
+      });
 
-        return (
-          <React.Fragment key={index}>
-            <LinearGradient
-              id={gradientId}
-              from={color + "DE"}
-              to={color + "DE"}
-              toOpacity={0.2}
-            />
-            <AreaClosed<T>
-              data={data}
-              x={(d) => xKey !== "date" ? xScale(d[xKey] as number) ?? 0 : xScale(getDate(d)) ?? 0}
-              y={(d) => yScale(d[key] as number) ?? 0}
-              yScale={yScale}
-              strokeWidth={1}
-              stroke={color}
-              fill={`url(#${gradientId})`}
-              curve={curveMonotoneX}
-            />
-          </React.Fragment>
-        );
-      })
-    );
+      const gradientId = `area-gradient-${index}-${color}`;
+
+      return (
+        <React.Fragment key={index}>
+          <LinearGradient
+            id={gradientId}
+            from={color + 'DE'}
+            to={color + 'DE'}
+            toOpacity={0.2}
+          />
+          <AreaClosed<T>
+            data={data}
+            x={(d) =>
+              xKey !== 'date'
+                ? xScale(d[xKey] as number) ?? 0
+                : xScale(getDate(d)) ?? 0
+            }
+            y={(d) => yScale(d[key] as number) ?? 0}
+            yScale={yScale}
+            strokeWidth={1}
+            stroke={color}
+            fill={`url(#${gradientId})`}
+            curve={curveMonotoneX}
+          />
+        </React.Fragment>
+      );
+    });
   }, [yOptions, getYValues, innerHeight, data, xScale, xKey]);
 
   return (
@@ -106,9 +116,9 @@ function AreaChart<T>({
         tickStroke="transparent"
         // stroke={"#fff"}
         tickLabelProps={() => ({
-          fill: "#303030",
+          fill: '#303030',
           fontSize: 13,
-          textAnchor: "middle",
+          textAnchor: 'middle',
           fontWeight: 500,
         })}
       />

@@ -1,4 +1,8 @@
-export function formatAriaChartData<DataType>(data: DataType[], yKeys: (keyof DataType)[], xKey: keyof Partial<DataType>) {
+export function formatAriaChartData<DataType>(
+  data: DataType[],
+  yKeys: (keyof DataType)[],
+  xKey: keyof Partial<DataType>,
+) {
   // const formattedData: AreaChartData<DataType>[] = [];
   const formattedData: any = [];
 

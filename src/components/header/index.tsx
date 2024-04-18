@@ -1,8 +1,8 @@
-import Image from "next/image";
-import { DollarSign } from "lucide-react";
+import Image from 'next/image';
+import { DollarSign } from 'lucide-react';
 
-import { ButtonImage } from "@/components/ui/button-image";
-import { Stake, Corcel, BoxArrowUp } from "@/icons";
+import { ButtonImage } from '@/components/ui/button-image';
+import { Stake, Corcel, BoxArrowUp } from '@/icons';
 
 const index = () => {
   return (
@@ -15,45 +15,34 @@ const index = () => {
           height={12}
           priority
         />
-        <div
-          className="text-white text-[15px] font-medium ml-3"
-        >
-          $601.25
-        </div>
+        <div className="text-white text-[15px] font-medium ml-3">$601.25</div>
         <div className="text-green flex items-center ml-3 mr-8">
-          <BoxArrowUp width={12} height={12} className="mr-1.5"/>
+          <BoxArrowUp width={12} height={12} className="mr-1.5" />
           24.43%
         </div>
 
         <div className="text-[15px] text-white mr-8">
-          <span className="text-secondaryText mr-4">
-            Market Cap
-          </span>
+          <span className="text-secondaryText mr-4">Market Cap</span>
           $3.85b
         </div>
         <div className="text-[15px] text-white">
-          <span className="text-secondaryText mr-4">
-            24hr Volume
-          </span>
+          <span className="text-secondaryText mr-4">24hr Volume</span>
           $27.97m
         </div>
       </div>
       <div className="flex gap-[10px]">
-        <ButtonImage
-          position="left"
-          iconComponent={<Corcel/>}
-        >
+        <ButtonImage position="left" iconComponent={<Corcel />}>
           Visit Corcel.io
         </ButtonImage>
         <ButtonImage
           position="left"
-          iconComponent={<DollarSign width={17} widths={17}/>}
+          iconComponent={<DollarSign width={17} widths={17} />}
         >
           Buy
         </ButtonImage>
         <ButtonImage
           position="left"
-          iconComponent={<Stake/>}
+          iconComponent={<Stake />}
           variant="secondary"
         >
           Stake

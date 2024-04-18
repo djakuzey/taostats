@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { cn } from '@/lib/utils';
 
 interface TableHeaderItemProps {
@@ -8,7 +8,9 @@ interface TableHeaderItemProps {
 
 function TableCellItem({ children, className }: TableHeaderItemProps) {
   return (
-    <div className={cn("text-[16px] text-white font-medium truncate", className)}>
+    <div
+      className={cn('text-[16px] text-white font-medium truncate', className)}
+    >
       {children}
     </div>
   );
